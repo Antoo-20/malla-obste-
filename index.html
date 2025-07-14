@@ -1,232 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<title>Malla Curricular Interactiva Obstetricia</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-  h1, h2 { color: #2a7ae2; }
-  .semestre { margin-bottom: 2.5rem; }
-  label { display: block; margin: 0.3rem 0; cursor: pointer; }
-  input[type=checkbox]:disabled + span { color: #aaa; }
-  small { color: #666; font-style: italic; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Obstetricia Interactiva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fff0f5;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .semestre {
+      background: #ffffff;
+      border-left: 6px solid #d63384;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.2);
+      margin-bottom: 25px;
+      padding: 20px;
+    }
+
+    .semestre h2 {
+      color: #e83e8c;
+      border-bottom: 2px dashed #f8a3c9;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    input[type=checkbox] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      accent-color: #e83e8c;
+    }
+
+    input[type=checkbox]:disabled + span {
+      color: #aaa;
+    }
+
+    small {
+      font-size: 12px;
+      color: #999;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 1.6em;
+      }
+
+      .semestre h2 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Malla Curricular Obstetricia - Interactiva</h1>
+<h1>🌸 Malla Obstetricia Interactiva</h1>
 
-<!-- Semestre 1 -->
 <div class="semestre" id="sem1">
   <h2>Semestre 1</h2>
-  <label><input type="checkbox" id="Introduccion_a_la_profesion"> <span>Introducción a la profesión</span></label>
-  <label><input type="checkbox" id="Quimica_general_y_organica"> <span>Química general y orgánica</span></label>
-  <label><input type="checkbox" id="Biologia_molecular_de_la_celula"> <span>Biología molecular de la célula</span></label>
-  <label><input type="checkbox" id="Anatomia_general"> <span>Anatomía general</span></label>
-  <label><input type="checkbox" id="Taller_de_desarrollo_personal"> <span>Taller de desarrollo personal</span></label>
+  <label><input type="checkbox" id="Introduccion_a_la_profesion"><span>Introducción a la profesión</span></label>
+  <label><input type="checkbox" id="Quimica_general_y_organica"><span>Química general y orgánica</span></label>
+  <label><input type="checkbox" id="Biologia_molecular_de_la_celula"><span>Biología molecular de la célula</span></label>
+  <label><input type="checkbox" id="Anatomia_general"><span>Anatomía general</span></label>
+  <label><input type="checkbox" id="Taller_de_desarrollo_personal"><span>Taller de desarrollo personal</span></label>
 </div>
 
-<!-- Semestre 2 -->
 <div class="semestre" id="sem2">
   <h2>Semestre 2</h2>
-  <label><input type="checkbox" id="Salud_publica" disabled> <span>Salud pública</span></label>
-  <label><input type="checkbox" id="Promocion_y_educacion_para_la_salud_1" disabled> <span>Promoción y educación para la salud 1</span></label>
-  <label><input type="checkbox" id="Bioetica_y_aspectos_legales" disabled> <span>Bioética y aspectos legales</span></label>
-  <label><input type="checkbox" id="Morfologia_reproductiva" disabled> <span>Morfología reproductiva <small>(requiere Anatomía general)</small></span></label>
-  <label><input type="checkbox" id="Bioquimica_clinica" disabled> <span>Bioquímica clínica <small>(requiere Química general y Biología molecular de la célula)</small></span></label>
-  <label><input type="checkbox" id="Psicologia_del_desarrollo" disabled> <span>Psicología del desarrollo</span></label>
-  <label><input type="checkbox" id="Ingles_1" disabled> <span>Inglés 1</span></label>
-</div>
-
-<!-- Semestre 3 -->
-<div class="semestre" id="sem3">
-  <h2>Semestre 3</h2>
-  <label><input type="checkbox" id="Salud_familiar" disabled> <span>Salud familiar <small>(requiere Salud pública)</small></span></label>
-  <label><input type="checkbox" id="Promocion_y_educacion_2" disabled> <span>Promoción y educación para la salud 2 <small>(requiere Salud pública y Promoción 1)</small></span></label>
-  <label><input type="checkbox" id="Epidemiologia" disabled> <span>Epidemiología <small>(requiere Salud pública)</small></span></label>
-  <label><input type="checkbox" id="Desarrollo_embriofetal" disabled> <span>Desarrollo embriofetal <small>(requiere Biología molecular y Morfología reproductiva)</small></span></label>
-  <label><input type="checkbox" id="Fisiologia" disabled> <span>Fisiología <small>(requiere Anatomía general y Bioquímica clínica)</small></span></label>
-  <label><input type="checkbox" id="Microbiologia_y_parasitologia_clinica" disabled> <span>Microbiología y parasitología clínica <small>(requiere Bioquímica clínica)</small></span></label>
-  <label><input type="checkbox" id="Bioestadistica" disabled> <span>Bioestadística <small>(sin requisitos)</small></span></label>
-</div>
-
-<!-- Semestre 4 -->
-<div class="semestre" id="sem4">
-  <h2>Semestre 4</h2>
-  <label><input type="checkbox" id="Obstetricia_1" disabled> <span>Obstetricia 1 <small>(requiere Salud familiar y Desarrollo embriofetal)</small></span></label>
-  <label><input type="checkbox" id="Ginecologia_1" disabled> <span>Ginecología 1 <small>(requiere Salud familiar y Desarrollo embriofetal)</small></span></label>
-  <label><input type="checkbox" id="Neonatologia_1" disabled> <span>Neonatología 1 <small>(requiere Salud familiar y Desarrollo embriofetal)</small></span></label>
-  <label><input type="checkbox" id="Proceso_de_atencion_de_enfermeria" disabled> <span>Proceso de atención de enfermería <small>(requiere Fisiología y Microbiología y parasitología clínica)</small></span></label>
-  <label><input type="checkbox" id="Farmacologia_general_y_gineco_obstetricia" disabled> <span>Farmacología general y gineco obstetricia <small>(requiere Bioquímica clínica)</small></span></label>
-  <label><input type="checkbox" id="Fisiopatologia" disabled> <span>Fisiopatología <small>(requiere Fisiología)</small></span></label>
-  <label><input type="checkbox" id="Ingles_2" disabled> <span>Inglés 2 <small>(requiere Inglés 1)</small></span></label>
-</div>
-
-<!-- Semestre 5 -->
-<div class="semestre" id="sem5">
-  <h2>Semestre 5</h2>
-  <label><input type="checkbox" id="Obstetricia_2" disabled> <span>Obstetricia 2 <small>(requiere Obstetricia 1 y Fisiopatología)</small></span></label>
-  <label><input type="checkbox" id="Ginecologia_2" disabled> <span>Ginecología 2 <small>(requiere Ginecología 1 y Fisiopatología)</small></span></label>
-  <label><input type="checkbox" id="Neonatologia_2" disabled> <span>Neonatología 2 <small>(requiere Neonatología 1 y Fisiopatología)</small></span></label>
-  <label><input type="checkbox" id="Investigacion_en_salud_1" disabled> <span>Investigación en salud 1 <small>(requiere Bioestadística)</small></span></label>
-  <label><input type="checkbox" id="Clinica_proceso_de_enfermeria" disabled> <span>Clínica proceso de enfermería <small>(requiere Promoción 2 y Proceso de atención de enfermería)</small></span></label>
-  <label><input type="checkbox" id="Atencion_primaria_obstetrica" disabled> <span>Atención primaria obstétrica <small>(requiere Promoción 2 y Obstetricia 1)</small></span></label>
-</div>
-
-<!-- Semestre 6 -->
-<div class="semestre" id="sem6">
-  <h2>Semestre 6</h2>
-  <label><input type="checkbox" id="Investigacion_en_salud_2" disabled> <span>Investigación en salud 2 <small>(requiere Investigación en salud 1)</small></span></label>
-  <label><input type="checkbox" id="Sexualidad_y_sexologia" disabled> <span>Sexualidad y sexología <small>(requiere Ginecología 2)</small></span></label>
-  <label><input type="checkbox" id="Integracion_profesional" disabled> <span>Integración profesional <small>(requiere Obstetricia 2, Ginecología 2 y Neonatología 2)</small></span></label>
-  <label><input type="checkbox" id="Psicologia_de_la_mujer" disabled> <span>Psicología de la mujer <small>(requiere Psicología del desarrollo)</small></span></label>
-  <label><input type="checkbox" id="Enfermeria_medico_quirurgica" disabled> <span>Enfermería médico quirúrgica <small>(requiere Clínica proceso de enfermería)</small></span></label>
-  <label><input type="checkbox" id="Atencion_primaria_ginecologica" disabled> <span>Atención primaria ginecológica <small>(requiere Ginecología 2 y Atención primaria obstétrica)</small></span></label>
-  <label><input type="checkbox" id="Ingles_3" disabled> <span>Inglés 3 <small>(requiere Inglés 2)</small></span></label>
-</div>
-
-<!-- Semestre 7 -->
-<div class="semestre" id="sem7">
-  <h2>Semestre 7</h2>
-  <label><input type="checkbox" id="Proyecto_de_licenciatura_1" disabled> <span>Proyecto de licenciatura 1 <small>(requiere Investigación en salud 2)</small></span></label>
-  <label><input type="checkbox" id="Gestion_en_salud_1" disabled> <span>Gestión en salud 1 <small>(requiere Atención primaria ginecológica)</small></span></label>
-  <label><input type="checkbox" id="Clinica_de_servicios_gineco_obstetricos_1" disabled> <span>Clínica de servicios gineco obstétricos 1 <small>(requiere Integración profesional y Atención primaria ginecológica)</small></span></label>
-  <label><input type="checkbox" id="Clinica_en_neonatologia_1" disabled> <span>Clínica en neonatología 1 <small>(requiere Neonatología 2 e Integración profesional)</small></span></label>
-  <label><input type="checkbox" id="Proceso_de_intervencion_comunitaria" disabled> <span>Proceso de intervención comunitaria <small>(requiere Integración profesional)</small></span></label>
-  <label><input type="checkbox" id="Optativo_de_formacion_general" disabled> <span>Optativo de formación general <small>(sin requisitos)</small></span></label>
-</div>
-
-<!-- Semestre 8 -->
-<div class="semestre" id="sem8">
-  <h2>Semestre 8</h2>
-  <label><input type="checkbox" id="Proyecto_de_licenciatura_2" disabled> <span>Proyecto de licenciatura 2 <small>(requiere Proyecto de licenciatura 1)</small></span></label>
-  <label><input type="checkbox" id="Gestion_en_salud_2" disabled> <span>Gestión en salud 2 <small>(requiere Gestión en salud 1)</small></span></label>
-  <label><input type="checkbox" id="Clinica_de_servicios_gineco_obstetricos_2" disabled> <span>Clínica de servicios gineco obstétricos 2 <small>(requiere Clínica de servicios gineco obstétricos 1)</small></span></label>
-  <label><input type="checkbox" id="Clinica_en_neonatologia_2" disabled> <span>Clínica en neonatología 2 <small>(requiere Clínica en neonatología 1)</small></span></label>
-  <label><input type="checkbox" id="Electivo_de_formacion_1" disabled> <span>Electivo de formación 1 <small>(sin requisitos)</small></span></label>
-</div>
-
-<!-- Semestre 9 -->
-<div class="semestre" id="sem9">
-  <h2>Semestre 9</h2>
-  <label><input type="checkbox" id="Gestion_en_salud_3" disabled> <span>Gestión en salud 3 <small>(requiere Gestión en salud 2)</small></span></label>
-  <label><input type="checkbox" id="Internado_intrahospitalario" disabled> <span>Internado intrahospitalario <small>(requiere Clínica de servicios gineco obstétricos 2 y Clínica en neonatología 2)</small></span></label>
-  <label><input type="checkbox" id="Internado_de_atencion_primaria_y_comunitaria" disabled> <span>Internado de atención primaria y comunitaria <small>(requiere Proceso de intervención comunitaria)</small></span></label>
-  <label><input type="checkbox" id="Electivo_de_formacion_2" disabled> <span>Electivo de formación 2 <small>(sin requisitos)</small></span></label>
-</div>
-
-<!-- Semestre 10 -->
-<div class="semestre" id="sem10">
-  <h2>Semestre 10</h2>
-  <label><input type="checkbox" id="Internado_integral" disabled> <span>Internado integral <small>(requiere Optativo formación general, Electivo formación 1, Gestión 3, Internado intrahospitalario, Internado de atención primaria y comunitaria y Electivo formación 2)</small></span></label>
-  <label><input type="checkbox" id="Trabajo_de_titulacion" disabled> <span>Trabajo de titulación <small>(sin requisitos)</small></span></label>
-  <label><input type="checkbox" id="Examen_de_titulo" disabled> <span>Examen de título <small>(sin requisitos)</small></span></label>
+  <label><input type="checkbox" id="Salud_publica" disabled><span>Salud pública</span></label>
+  <label><input type="checkbox" id="Promocion_y_educacion_para_la_salud_1" disabled><span>Promoción y educación 1</span></label>
+  <label><input type="checkbox" id="Bioetica_y_aspectos_legales" disabled><span>Bioética y aspectos legales</span></label>
+  <label><input type="checkbox" id="Morfologia_reproductiva" disabled><span>Morfología reproductiva <small>(requiere Anatomía)</small></span></label>
+  <label><input type="checkbox" id="Bioquimica_clinica" disabled><span>Bioquímica clínica <small>(requiere Química y Biología)</small></span></label>
+  <label><input type="checkbox" id="Psicologia_del_desarrollo" disabled><span>Psicología del desarrollo</span></label>
+  <label><input type="checkbox" id="Ingles_1" disabled><span>Inglés 1</span></label>
 </div>
 
 <script>
-  // Definimos requisitos para cada ramo (array de ids)
   const requisitos = {
     Morfologia_reproductiva: ['Anatomia_general'],
-    Bioquimica_clinica: ['Quimica_general_y_organica', 'Biologia_molecular_de_la_celula'],
-    Salud_familiar: ['Salud_publica'],
-    Promocion_y_educacion_2: ['Salud_publica', 'Promocion_y_educacion_para_la_salud_1'],
-    Epidemiologia: ['Salud_publica'],
-    Desarrollo_embriofetal: ['Biologia_molecular_de_la_celula', 'Morfologia_reproductiva'],
-    Fisiologia: ['Anatomia_general', 'Bioquimica_clinica'],
-    Microbiologia_y_parasitologia_clinica: ['Bioquimica_clinica'],
-    Obstetricia_1: ['Salud_familiar', 'Desarrollo_embriofetal'],
-    Ginecologia_1: ['Salud_familiar', 'Desarrollo_embriofetal'],
-    Neonatologia_1: ['Salud_familiar', 'Desarrollo_embriofetal'],
-    Proceso_de_atencion_de_enfermeria: ['Fisiologia', 'Microbiologia_y_parasitologia_clinica'],
-    Farmacologia_general_y_gineco_obstetricia: ['Bioquimica_clinica'],
-    Fisiopatologia: ['Fisiologia'],
-    Ingles_2: ['Ingles_1'],
-    Obstetricia_2: ['Obstetricia_1', 'Fisiopatologia'],
-    Ginecologia_2: ['Ginecologia_1', 'Fisiopatologia'],
-    Neonatologia_2: ['Neonatologia_1', 'Fisiopatologia'],
-    Investigacion_en_salud_1: ['Bioestadistica'],
-    Clinica_proceso_de_enfermeria: ['Promocion_y_educacion_2', 'Proceso_de_atencion_de_enfermeria'],
-    Atencion_primaria_obstetrica: ['Promocion_y_educacion_2', 'Obstetricia_1'],
-    Investigacion_en_salud_2: ['Investigacion_en_salud_1'],
-    Sexualidad_y_sexologia: ['Ginecologia_2'],
-    Integracion_profesional: ['Obstetricia_2', 'Ginecologia_2', 'Neonatologia_2'],
-    Psicologia_de_la_mujer: ['Psicologia_del_desarrollo'],
-    Enfermeria_medico_quirurgica: ['Clinica_proceso_de_enfermeria'],
-    Atencion_primaria_ginecologica: ['Ginecologia_2', 'Atencion_primaria_obstetrica'],
-    Ingles_3: ['Ingles_2'],
-    Proyecto_de_licenciatura_1: ['Investigacion_en_salud_2'],
-    Gestion_en_salud_1: ['Atencion_primaria_ginecologica'],
-    Clinica_de_servicios_gineco_obstetricos_1: ['Integracion_profesional', 'Atencion_primaria_ginecologica'],
-    Clinica_en_neonatologia_1: ['Neonatologia_2', 'Integracion_profesional'],
-    Proceso_de_intervencion_comunitaria: ['Integracion_profesional'],
-    Proyecto_de_licenciatura_2: ['Proyecto_de_licenciatura_1'],
-    Gestion_en_salud_2: ['Gestion_en_salud_1'],
-    Clinica_de_servicios_gineco_obstetricos_2: ['Clinica_de_servicios_gineco_obstetricos_1'],
-    Clinica_en_neonatologia_2: ['Clinica_en_neonatologia_1'],
-    Gestion_en_salud_3: ['Gestion_en_salud_2'],
-    Internado_intrahospitalario: ['Clinica_de_servicios_gineco_obstetricos_2', 'Clinica_en_neonatologia_2'],
-    Internado_de_atencion_primaria_y_comunitaria: ['Proceso_de_intervencion_comunitaria'],
-    Internado_integral: ['Optativo_de_formacion_general', 'Electivo_de_formacion_1', 'Gestion_en_salud_3', 'Internado_intrahospitalario', 'Internado_de_atencion_primaria_y_comunitaria', 'Electivo_de_formacion_2'],
-    // Los sin requisitos no se ponen aquí
+    Bioquimica_clinica: ['Quimica_general_y_organica', 'Biologia_molecular_de_la_celula']
   };
 
-  // Lista de todas las materias (checkbox ids)
-  const todasMaterias = [
-    // Semestre 1
-    'Introduccion_a_la_profesion', 'Quimica_general_y_organica', 'Biologia_molecular_de_la_celula', 'Anatomia_general', 'Taller_de_desarrollo_personal',
-    // Semestre 2
-    'Salud_publica', 'Promocion_y_educacion_para_la_salud_1', 'Bioetica_y_aspectos_legales', 'Morfologia_reproductiva', 'Bioquimica_clinica', 'Psicologia_del_desarrollo', 'Ingles_1',
-    // Semestre 3
-    'Salud_familiar', 'Promocion_y_educacion_2', 'Epidemiologia', 'Desarrollo_embriofetal', 'Fisiologia', 'Microbiologia_y_parasitologia_clinica', 'Bioestadistica',
-    // Semestre 4
-    'Obstetricia_1', 'Ginecologia_1', 'Neonatologia_1', 'Proceso_de_atencion_de_enfermeria', 'Farmacologia_general_y_gineco_obstetricia', 'Fisiopatologia', 'Ingles_2',
-    // Semestre 5
-    'Obstetricia_2', 'Ginecologia_2', 'Neonatologia_2', 'Investigacion_en_salud_1', 'Clinica_proceso_de_enfermeria', 'Atencion_primaria_obstetrica',
-    // Semestre 6
-    'Investigacion_en_salud_2', 'Sexualidad_y_sexologia', 'Integracion_profesional', 'Psicologia_de_la_mujer', 'Enfermeria_medico_quirurgica', 'Atencion_primaria_ginecologica', 'Ingles_3',
-    // Semestre 7
-    'Proyecto_de_licenciatura_1', 'Gestion_en_salud_1', 'Clinica_de_servicios_gineco_obstetricos_1', 'Clinica_en_neonatologia_1', 'Proceso_de_intervencion_comunitaria', 'Optativo_de_formacion_general',
-    // Semestre 8
-    'Proyecto_de_licenciatura_2', 'Gestion_en_salud_2', 'Clinica_de_servicios_gineco_obstetricos_2', 'Clinica_en_neonatologia_2', 'Electivo_de_formacion_1',
-    // Semestre 9
-    'Gestion_en_salud_3', 'Internado_intrahospitalario', 'Internado_de_atencion_primaria_y_comunitaria', 'Electivo_de_formacion_2',
-    // Semestre 10
-    'Internado_integral', 'Trabajo_de_titulacion', 'Examen_de_titulo'
+  const sem1 = [
+    'Introduccion_a_la_profesion',
+    'Quimica_general_y_organica',
+    'Biologia_molecular_de_la_celula',
+    'Anatomia_general',
+    'Taller_de_desarrollo_personal'
   ];
 
-  // Habilitar solo semestre 1 al principio (sin restricciones)
-  const sem1 = ['Introduccion_a_la_profesion', 'Quimica_general_y_organica', 'Biologia_molecular_de_la_celula', 'Anatomia_general', 'Taller_de_desarrollo_personal'];
-  sem1.forEach(id => {
-    document.getElementById(id).disabled = false;
-  });
+  const sem2 = [
+    'Salud_publica',
+    'Promocion_y_educacion_para_la_salud_1',
+    'Bioetica_y_aspectos_legales',
+    'Morfologia_reproductiva',
+    'Bioquimica_clinica',
+    'Psicologia_del_desarrollo',
+    'Ingles_1'
+  ];
 
-  // Función para chequear si se cumplen los requisitos de una materia
   function cumpleRequisitos(materia) {
-    if (!requisitos[materia]) return true; // sin requisitos está habilitada
+    if (!requisitos[materia]) return true;
     return requisitos[materia].every(req => document.getElementById(req).checked);
   }
 
-  // Función para actualizar la habilitación de materias según requisitos
-  function actualizarHabilitacion() {
-    todasMaterias.forEach(materia => {
-      if (sem1.includes(materia)) return; // sem1 siempre habilitada desde inicio
-      const checkbox = document.getElementById(materia);
-      if (cumpleRequisitos(materia)) {
-        checkbox.disabled = false;
-      } else {
-        checkbox.disabled = true;
-        checkbox.checked = false;
-      }
+  function actualizarEstado() {
+    sem2.forEach(id => {
+      const el = document.getElementById(id);
+      el.disabled = !cumpleRequisitos(id);
+      if (!cumpleRequisitos(id)) el.checked = false;
     });
   }
 
-  // Evento para actualizar la habilitación cuando cambie cualquier checkbox
-  todasMaterias.forEach(materia => {
-    document.getElementById(materia).addEventListener('change', actualizarHabilitacion);
+  sem1.forEach(id => {
+    document.getElementById(id).addEventListener('change', actualizarEstado);
   });
 
-  // Inicializar la habilitación al cargar
-  actualizarHabilitacion();
+  actualizarEstado();
 </script>
 
 </body>
