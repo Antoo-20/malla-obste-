@@ -71,6 +71,20 @@
     .psico       { background-color: #f2f4f4; }
     .idioma      { background-color: #d6eaf8; }
 
+    .boton-reset {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      background-color: #f8bbd0;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 15px;
@@ -92,6 +106,10 @@
 
 <div id="contenedor"></div>
 
+<div class="boton-reset">
+  <button onclick="resetearMalla()">🔄 Reiniciar malla</button>
+</div>
+
 <script>
 const datosRamos = {
   "Semestre 1": [
@@ -109,6 +127,67 @@ const datosRamos = {
     { nombre: "Bioquímica clínica", id: "bioquimica", categoria: "basicas", requisitos: ["quimica", "biologia"] },
     { nombre: "Psicología del desarrollo", id: "psicologia", categoria: "psico" },
     { nombre: "Inglés 1", id: "ingles1", categoria: "idioma" }
+  ],
+  "Semestre 3": [
+    { nombre: "Salud familiar", id: "salud_familiar", categoria: "publica", requisitos: ["salud_publica"] },
+    { nombre: "Promoción y educación 2", id: "promocion2", categoria: "publica", requisitos: ["salud_publica", "promocion1"] },
+    { nombre: "Epidemiología", id: "epidemiologia", categoria: "publica", requisitos: ["salud_publica"] },
+    { nombre: "Desarrollo embriofetal", id: "desarrollo_embriofetal", categoria: "clinica", requisitos: ["biologia", "morfologia"] },
+    { nombre: "Fisiología", id: "fisiologia", categoria: "basicas", requisitos: ["anatomia", "bioquimica"] },
+    { nombre: "Microbiología y parasitología clínica", id: "microbiologia", categoria: "basicas", requisitos: ["bioquimica"] },
+    { nombre: "Bioestadística", id: "bioestadistica", categoria: "investigacion" }
+  ],
+  "Semestre 4": [
+    { nombre: "Obstetricia 1", id: "obste1", categoria: "clinica", requisitos: ["salud_familiar", "desarrollo_embriofetal"] },
+    { nombre: "Ginecología 1", id: "gine1", categoria: "clinica", requisitos: ["salud_familiar", "desarrollo_embriofetal"] },
+    { nombre: "Neonatología 1", id: "neo1", categoria: "clinica", requisitos: ["salud_familiar", "desarrollo_embriofetal"] },
+    { nombre: "Proceso de atención de enfermería", id: "proceso_enfermeria", categoria: "clinica", requisitos: ["fisiologia", "microbiologia"] },
+    { nombre: "Farmacología general y gineco obstetricia", id: "farmacologia", categoria: "basicas", requisitos: ["bioquimica"] },
+    { nombre: "Fisiopatología", id: "fisiopatologia", categoria: "basicas", requisitos: ["fisiologia"] },
+    { nombre: "Inglés 2", id: "ingles2", categoria: "idioma", requisitos: ["ingles1"] }
+  ],
+  "Semestre 5": [
+    { nombre: "Obstetricia 2", id: "obste2", categoria: "clinica", requisitos: ["obste1", "fisiopatologia"] },
+    { nombre: "Ginecología 2", id: "gine2", categoria: "clinica", requisitos: ["gine1", "fisiopatologia"] },
+    { nombre: "Neonatología 2", id: "neo2", categoria: "clinica", requisitos: ["neo1", "fisiopatologia"] },
+    { nombre: "Investigación en salud 1", id: "investigacion1", categoria: "investigacion", requisitos: ["bioestadistica"] },
+    { nombre: "Clínica proceso de enfermería", id: "clinica_enfermeria", categoria: "clinica", requisitos: ["promocion2", "proceso_enfermeria"] },
+    { nombre: "Atención primaria obstétrica", id: "atencion_obste", categoria: "clinica", requisitos: ["promocion2", "obste1"] }
+  ],
+  "Semestre 6": [
+    { nombre: "Investigación en salud 2", id: "investigacion2", categoria: "investigacion", requisitos: ["investigacion1"] },
+    { nombre: "Sexualidad y sexología", id: "sexualidad", categoria: "clinica", requisitos: ["gine2"] },
+    { nombre: "Integración profesional", id: "integracion", categoria: "clinica", requisitos: ["obste2", "gine2", "neo2"] },
+    { nombre: "Psicología de la mujer", id: "psicologia_mujer", categoria: "psico", requisitos: ["psicologia"] },
+    { nombre: "Enfermería médico quirúrgica", id: "enfermeria_quirurgica", categoria: "clinica", requisitos: ["clinica_enfermeria"] },
+    { nombre: "Atención primaria ginecológica", id: "atencion_gine", categoria: "clinica", requisitos: ["gine2", "atencion_obste"] },
+    { nombre: "Inglés 3", id: "ingles3", categoria: "idioma", requisitos: ["ingles2"] }
+  ],
+  "Semestre 7": [
+    { nombre: "Proyecto de licenciatura 1", id: "licenciatura1", categoria: "investigacion", requisitos: ["investigacion2"] },
+    { nombre: "Gestión en salud 1", id: "gestion1", categoria: "publica", requisitos: ["atencion_gine"] },
+    { nombre: "Clínica de servicios gineco obstétricos 1", id: "clinica_gineco1", categoria: "clinica", requisitos: ["integracion", "atencion_gine"] },
+    { nombre: "Clínica en neonatología 1", id: "clinica_neo1", categoria: "clinica", requisitos: ["neo2", "integracion"] },
+    { nombre: "Proceso de intervención comunitaria", id: "intervencion_comunitaria", categoria: "publica", requisitos: ["integracion"] },
+    { nombre: "Optativo de formación general", id: "optativo1", categoria: "general" }
+  ],
+  "Semestre 8": [
+    { nombre: "Proyecto de licenciatura 2", id: "licenciatura2", categoria: "investigacion", requisitos: ["licenciatura1"] },
+    { nombre: "Gestión en salud 2", id: "gestion2", categoria: "publica", requisitos: ["gestion1"] },
+    { nombre: "Clínica de servicios gineco obstétricos 2", id: "clinica_gineco2", categoria: "clinica", requisitos: ["clinica_gineco1"] },
+    { nombre: "Clínica en neonatología 2", id: "clinica_neo2", categoria: "clinica", requisitos: ["clinica_neo1"] },
+    { nombre: "Electivo de formación 1", id: "electivo1", categoria: "general" }
+  ],
+  "Semestre 9": [
+    { nombre: "Gestión en salud 3", id: "gestion3", categoria: "publica", requisitos: ["gestion2"] },
+    { nombre: "Internado intrahospitalario", id: "internado1", categoria: "clinica", requisitos: ["clinica_gineco2", "clinica_neo2"] },
+    { nombre: "Internado de atención primaria y comunitaria", id: "internado2", categoria: "publica", requisitos: ["intervencion_comunitaria"] },
+    { nombre: "Electivo de formación 2", id: "electivo2", categoria: "general" }
+  ],
+  "Semestre 10": [
+    { nombre: "Internado integral", id: "internado_integral", categoria: "clinica", requisitos: ["optativo1", "electivo1", "electivo2", "gestion3", "internado1", "internado2"] },
+    { nombre: "Trabajo de titulación", id: "titulacion", categoria: "investigacion" },
+    { nombre: "Examen de título", id: "examen", categoria: "investigacion" }
   ]
 };
 
@@ -123,6 +202,8 @@ const categoriasColores = {
 };
 
 const contenedor = document.getElementById("contenedor");
+const datosPorId = {};
+Object.values(datosRamos).flat().forEach(r => datosPorId[r.id] = r.nombre);
 
 Object.keys(datosRamos).forEach(sem => {
   const divSem = document.createElement("div");
@@ -150,9 +231,8 @@ Object.keys(datosRamos).forEach(sem => {
     label.appendChild(span);
 
     if (ramo.requisitos) {
-      label.appendChild(document.createElement("br"));
       const small = document.createElement("small");
-      small.textContent = `Requiere: ${ramo.requisitos.map(r => datosPorId[r]).join(", ")}`;
+      small.textContent = ` (requiere: ${ramo.requisitos.map(r => datosPorId[r]).join(", ")})`;
       label.appendChild(small);
     }
 
@@ -162,9 +242,6 @@ Object.keys(datosRamos).forEach(sem => {
   Object.values(categorias).forEach(cat => divSem.appendChild(cat));
   contenedor.appendChild(divSem);
 });
-
-const datosPorId = {};
-Object.values(datosRamos).flat().forEach(r => datosPorId[r.id] = r.nombre);
 
 function guardarProgreso() {
   const estado = {};
@@ -194,6 +271,14 @@ function actualizarRequisitos() {
     const requisitosCumplidos = cumpleRequisitos(input.id);
     input.disabled = !requisitosCumplidos;
   });
+}
+
+function resetearMalla() {
+  localStorage.removeItem('malla_obstetricia');
+  document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    input.checked = false;
+  });
+  actualizarRequisitos();
 }
 
 cargarProgreso();
