@@ -11,7 +11,7 @@
       background: #fff7fb;
       padding: 20px;
       margin: 0 auto;
-      max-width: 850px;
+      max-width: 900px;
     }
 
     h1 {
@@ -90,92 +90,119 @@
 
 <h1>🌸 Malla Obstetricia Interactiva</h1>
 
-<div class="semestre">
-  <h2>Semestre 1</h2>
-
-  <div class="categoria general">
-    <label><input type="checkbox" id="Introduccion_a_la_profesion"><span>Introducción a la profesión</span></label>
-    <label><input type="checkbox" id="Taller_de_desarrollo_personal"><span>Taller de desarrollo personal</span></label>
-  </div>
-
-  <div class="categoria basicas">
-    <label><input type="checkbox" id="Quimica_general_y_organica"><span>Química general y orgánica</span></label>
-    <label><input type="checkbox" id="Biologia_molecular_de_la_celula"><span>Biología molecular de la célula</span></label>
-    <label><input type="checkbox" id="Anatomia_general"><span>Anatomía general</span></label>
-  </div>
-</div>
-
-<div class="semestre">
-  <h2>Semestre 2</h2>
-
-  <div class="categoria publica">
-    <label><input type="checkbox" id="Salud_publica" disabled><span>Salud pública</span></label>
-    <label><input type="checkbox" id="Promocion_y_educacion_para_la_salud_1" disabled><span>Promoción y educación 1</span></label>
-  </div>
-
-  <div class="categoria general">
-    <label><input type="checkbox" id="Bioetica_y_aspectos_legales" disabled><span>Bioética y aspectos legales</span></label>
-  </div>
-
-  <div class="categoria clinica">
-    <label><input type="checkbox" id="Morfologia_reproductiva" disabled><span>Morfología reproductiva <small>(requiere Anatomía)</small></span></label>
-  </div>
-
-  <div class="categoria basicas">
-    <label><input type="checkbox" id="Bioquimica_clinica" disabled><span>Bioquímica clínica <small>(requiere Química y Biología)</small></span></label>
-  </div>
-
-  <div class="categoria psico">
-    <label><input type="checkbox" id="Psicologia_del_desarrollo" disabled><span>Psicología del desarrollo</span></label>
-  </div>
-
-  <div class="categoria idioma">
-    <label><input type="checkbox" id="Ingles_1" disabled><span>Inglés 1</span></label>
-  </div>
-</div>
+<div id="contenedor"></div>
 
 <script>
-  const requisitos = {
-    Morfologia_reproductiva: ['Anatomia_general'],
-    Bioquimica_clinica: ['Quimica_general_y_organica', 'Biologia_molecular_de_la_celula']
-  };
+const datosRamos = {
+  "Semestre 1": [
+    { nombre: "Introducción a la profesión", id: "intro", categoria: "general" },
+    { nombre: "Química general y orgánica", id: "quimica", categoria: "basicas" },
+    { nombre: "Biología molecular de la célula", id: "biologia", categoria: "basicas" },
+    { nombre: "Anatomía general", id: "anatomia", categoria: "basicas" },
+    { nombre: "Taller de desarrollo personal", id: "taller", categoria: "general" }
+  ],
+  "Semestre 2": [
+    { nombre: "Salud pública", id: "salud_publica", categoria: "publica" },
+    { nombre: "Promoción y educación 1", id: "promocion1", categoria: "publica" },
+    { nombre: "Bioética y aspectos legales", id: "bioetica", categoria: "general" },
+    { nombre: "Morfología reproductiva", id: "morfologia", categoria: "clinica", requisitos: ["anatomia"] },
+    { nombre: "Bioquímica clínica", id: "bioquimica", categoria: "basicas", requisitos: ["quimica", "biologia"] },
+    { nombre: "Psicología del desarrollo", id: "psicologia", categoria: "psico" },
+    { nombre: "Inglés 1", id: "ingles1", categoria: "idioma" }
+  ]
+};
 
-  const sem1 = [
-    'Introduccion_a_la_profesion',
-    'Quimica_general_y_organica',
-    'Biologia_molecular_de_la_celula',
-    'Anatomia_general',
-    'Taller_de_desarrollo_personal'
-  ];
+const categoriasColores = {
+  basicas: "basicas",
+  clinica: "clinica",
+  general: "general",
+  investigacion: "investigacion",
+  publica: "publica",
+  psico: "psico",
+  idioma: "idioma"
+};
 
-  const sem2 = [
-    'Salud_publica',
-    'Promocion_y_educacion_para_la_salud_1',
-    'Bioetica_y_aspectos_legales',
-    'Morfologia_reproductiva',
-    'Bioquimica_clinica',
-    'Psicologia_del_desarrollo',
-    'Ingles_1'
-  ];
+const contenedor = document.getElementById("contenedor");
 
-  function cumpleRequisitos(materia) {
-    if (!requisitos[materia]) return true;
-    return requisitos[materia].every(req => document.getElementById(req).checked);
-  }
+Object.keys(datosRamos).forEach(sem => {
+  const divSem = document.createElement("div");
+  divSem.className = "semestre";
+  const h2 = document.createElement("h2");
+  h2.textContent = sem;
+  divSem.appendChild(h2);
 
-  function actualizarEstado() {
-    sem2.forEach(id => {
-      const el = document.getElementById(id);
-      el.disabled = !cumpleRequisitos(id);
-      if (!cumpleRequisitos(id)) el.checked = false;
-    });
-  }
+  const categorias = {};
+  datosRamos[sem].forEach(ramo => {
+    if (!categorias[ramo.categoria]) {
+      const cat = document.createElement("div");
+      cat.className = `categoria ${categoriasColores[ramo.categoria]}`;
+      categorias[ramo.categoria] = cat;
+    }
 
-  sem1.forEach(id => {
-    document.getElementById(id).addEventListener('change', actualizarEstado);
+    const label = document.createElement("label");
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.id = ramo.id;
+    const span = document.createElement("span");
+    span.textContent = ramo.nombre;
+
+    label.appendChild(check);
+    label.appendChild(span);
+
+    if (ramo.requisitos) {
+      label.appendChild(document.createElement("br"));
+      const small = document.createElement("small");
+      small.textContent = `Requiere: ${ramo.requisitos.map(r => datosPorId[r]).join(", ")}`;
+      label.appendChild(small);
+    }
+
+    categorias[ramo.categoria].appendChild(label);
   });
 
-  actualizarEstado();
+  Object.values(categorias).forEach(cat => divSem.appendChild(cat));
+  contenedor.appendChild(divSem);
+});
+
+const datosPorId = {};
+Object.values(datosRamos).flat().forEach(r => datosPorId[r.id] = r.nombre);
+
+function guardarProgreso() {
+  const estado = {};
+  document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    estado[input.id] = input.checked;
+  });
+  localStorage.setItem('malla_obstetricia', JSON.stringify(estado));
+}
+
+function cargarProgreso() {
+  const estado = JSON.parse(localStorage.getItem('malla_obstetricia') || '{}');
+  for (const [id, checked] of Object.entries(estado)) {
+    const el = document.getElementById(id);
+    if (el) el.checked = checked;
+  }
+  actualizarRequisitos();
+}
+
+function cumpleRequisitos(id) {
+  const ramo = Object.values(datosRamos).flat().find(r => r.id === id);
+  if (!ramo || !ramo.requisitos) return true;
+  return ramo.requisitos.every(rid => document.getElementById(rid)?.checked);
+}
+
+function actualizarRequisitos() {
+  document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    const requisitosCumplidos = cumpleRequisitos(input.id);
+    input.disabled = !requisitosCumplidos;
+  });
+}
+
+cargarProgreso();
+document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+  input.addEventListener('change', () => {
+    actualizarRequisitos();
+    guardarProgreso();
+  });
+});
 </script>
 
 </body>
