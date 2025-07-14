@@ -8,40 +8,42 @@
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
-      background: #fff0f5;
+      background: #fff7fb;
       padding: 20px;
       margin: 0 auto;
-      max-width: 800px;
+      max-width: 850px;
     }
 
     h1 {
       text-align: center;
-      color: #d63384;
+      color: #c2185b;
       font-size: 2em;
       margin-bottom: 30px;
     }
 
     .semestre {
-      background: #ffffff;
-      border-left: 6px solid #d63384;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.2);
-      margin-bottom: 25px;
-      padding: 20px;
+      margin-bottom: 35px;
     }
 
     .semestre h2 {
-      color: #e83e8c;
-      border-bottom: 2px dashed #f8a3c9;
-      padding-bottom: 8px;
+      color: #c2185b;
+      font-size: 1.4em;
+      border-bottom: 2px dashed #f8bbd0;
+      padding-bottom: 6px;
       margin-bottom: 15px;
-      font-size: 1.3em;
+    }
+
+    .categoria {
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
     label {
       display: flex;
       align-items: center;
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
       font-size: 16px;
       color: #333;
     }
@@ -49,7 +51,6 @@
     input[type=checkbox] {
       margin-right: 10px;
       transform: scale(1.2);
-      accent-color: #e83e8c;
     }
 
     input[type=checkbox]:disabled + span {
@@ -58,9 +59,17 @@
 
     small {
       font-size: 12px;
-      color: #999;
+      color: #666;
       margin-left: 8px;
     }
+
+    .basicas     { background-color: #d6eaf8; }
+    .clinica     { background-color: #f9d6d5; }
+    .general     { background-color: #ebdef0; }
+    .investigacion { background-color: #d5f5e3; }
+    .publica     { background-color: #fcf3cf; }
+    .psico       { background-color: #f2f4f4; }
+    .idioma      { background-color: #d6eaf8; }
 
     @media (max-width: 600px) {
       body {
@@ -68,7 +77,7 @@
       }
 
       h1 {
-        font-size: 1.6em;
+        font-size: 1.5em;
       }
 
       .semestre h2 {
@@ -81,24 +90,48 @@
 
 <h1>🌸 Malla Obstetricia Interactiva</h1>
 
-<div class="semestre" id="sem1">
+<div class="semestre">
   <h2>Semestre 1</h2>
-  <label><input type="checkbox" id="Introduccion_a_la_profesion"><span>Introducción a la profesión</span></label>
-  <label><input type="checkbox" id="Quimica_general_y_organica"><span>Química general y orgánica</span></label>
-  <label><input type="checkbox" id="Biologia_molecular_de_la_celula"><span>Biología molecular de la célula</span></label>
-  <label><input type="checkbox" id="Anatomia_general"><span>Anatomía general</span></label>
-  <label><input type="checkbox" id="Taller_de_desarrollo_personal"><span>Taller de desarrollo personal</span></label>
+
+  <div class="categoria general">
+    <label><input type="checkbox" id="Introduccion_a_la_profesion"><span>Introducción a la profesión</span></label>
+    <label><input type="checkbox" id="Taller_de_desarrollo_personal"><span>Taller de desarrollo personal</span></label>
+  </div>
+
+  <div class="categoria basicas">
+    <label><input type="checkbox" id="Quimica_general_y_organica"><span>Química general y orgánica</span></label>
+    <label><input type="checkbox" id="Biologia_molecular_de_la_celula"><span>Biología molecular de la célula</span></label>
+    <label><input type="checkbox" id="Anatomia_general"><span>Anatomía general</span></label>
+  </div>
 </div>
 
-<div class="semestre" id="sem2">
+<div class="semestre">
   <h2>Semestre 2</h2>
-  <label><input type="checkbox" id="Salud_publica" disabled><span>Salud pública</span></label>
-  <label><input type="checkbox" id="Promocion_y_educacion_para_la_salud_1" disabled><span>Promoción y educación 1</span></label>
-  <label><input type="checkbox" id="Bioetica_y_aspectos_legales" disabled><span>Bioética y aspectos legales</span></label>
-  <label><input type="checkbox" id="Morfologia_reproductiva" disabled><span>Morfología reproductiva <small>(requiere Anatomía)</small></span></label>
-  <label><input type="checkbox" id="Bioquimica_clinica" disabled><span>Bioquímica clínica <small>(requiere Química y Biología)</small></span></label>
-  <label><input type="checkbox" id="Psicologia_del_desarrollo" disabled><span>Psicología del desarrollo</span></label>
-  <label><input type="checkbox" id="Ingles_1" disabled><span>Inglés 1</span></label>
+
+  <div class="categoria publica">
+    <label><input type="checkbox" id="Salud_publica" disabled><span>Salud pública</span></label>
+    <label><input type="checkbox" id="Promocion_y_educacion_para_la_salud_1" disabled><span>Promoción y educación 1</span></label>
+  </div>
+
+  <div class="categoria general">
+    <label><input type="checkbox" id="Bioetica_y_aspectos_legales" disabled><span>Bioética y aspectos legales</span></label>
+  </div>
+
+  <div class="categoria clinica">
+    <label><input type="checkbox" id="Morfologia_reproductiva" disabled><span>Morfología reproductiva <small>(requiere Anatomía)</small></span></label>
+  </div>
+
+  <div class="categoria basicas">
+    <label><input type="checkbox" id="Bioquimica_clinica" disabled><span>Bioquímica clínica <small>(requiere Química y Biología)</small></span></label>
+  </div>
+
+  <div class="categoria psico">
+    <label><input type="checkbox" id="Psicologia_del_desarrollo" disabled><span>Psicología del desarrollo</span></label>
+  </div>
+
+  <div class="categoria idioma">
+    <label><input type="checkbox" id="Ingles_1" disabled><span>Inglés 1</span></label>
+  </div>
 </div>
 
 <script>
